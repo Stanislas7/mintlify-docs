@@ -1,0 +1,38 @@
+---
+title: Why relations?
+---
+
+Tide uses `relation` declarations as its core abstraction.
+
+## Why not "functions"?
+
+A normal function story quickly pulls in a lot of machinery:
+
+- return values vs side effects
+- purity vs IO
+- modules/imports
+- a growing standard library
+
+Tide starts with something simpler: **rules**.
+
+A relation reads like a set of clauses:
+
+```tide
+relation abs where
+  abs(x) = x  when x >= 0
+  abs(x) = -x when x < 0
+```
+
+This gives you:
+
+- pattern matching by default
+- clear top-to-bottom selection (first match wins)
+- a natural way to express multiple cases
+
+You can *use* relations like functions:
+
+```tide
+query abs(-5) // 5
+```
+
+In other words: Tide doesn’t hate functions — it just picks a cleaner default.

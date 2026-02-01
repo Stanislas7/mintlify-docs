@@ -22,13 +22,23 @@
             ]
           },
           {
+            "group": "Philosophy",
+            "pages": [
+              "language/philosophy",
+              "language/why-relations"
+            ]
+          },
+          {
             "group": "Language tour",
             "pages": [
               "language/overview",
+              "language/comments",
+              "language/queries-and-output",
               "language/relations",
               "language/expressions",
               "language/collections",
-              "language/comprehensions"
+              "language/comprehensions",
+              "language/examples"
             ]
           }
         ]

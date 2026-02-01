@@ -1,0 +1,38 @@
+---
+title: Cool examples
+---
+
+A few Tide snippets that show the vibe.
+
+## Factorial with guards
+
+```tide
+relation factorial where
+  factorial(0) = 1
+  factorial(n) = n * factorial(n - 1) when n > 0
+
+query factorial(6)
+```
+
+## Comprehensions + ranges
+
+```tide
+query [x * x for x in 1..10]
+query [x for x in 1..30 when x % 2 == 0]
+```
+
+## Dicts feel like data
+
+```tide
+let person = {name: "Alice", age: 30}
+query person.name
+```
+
+## Tiny tests (assertions)
+
+```tide
+relation double where
+  double(x) = x * 2
+
+assert_eq(double(5), 10)
+```

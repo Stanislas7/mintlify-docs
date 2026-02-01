@@ -1,0 +1,27 @@
+---
+title: Queries & output
+---
+
+A Tide program is usually a mix of `relation` definitions and `query` statements.
+
+## `query` is how you "print"
+
+Tide is currently side-effect-light: there isn’t a general-purpose `print(...)` builtin.
+
+Instead, you use `query` to evaluate an expression and display its result:
+
+```tide
+query 1 + 2
+query "hello"
+query [x * x for x in 1..5]
+```
+
+In the REPL, each `query` shows you the computed value.
+
+## Why this is nice
+
+- keeps programs readable
+- avoids IO semantics in the early alpha
+- makes examples and docs consistent
+
+A real `print` (or logging) can come later once the semantics are nailed down.
