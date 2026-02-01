@@ -1,21 +1,108 @@
 ---
 title: Built-ins
 ---
-This list reflects what’s currently implemented (alpha). If something here behaves differently, file an issue.
+
+This page reflects what’s currently implemented in the interpreter (alpha). If something here behaves differently, please file an issue.
 
 ## Testing
 
-- `assert(condition[, message])`
-- `assert_eq(a, b)`
+### `assert(condition[, message])`
 
-## Lists
+Asserts that a condition is `true`.
 
-- `first(list)`
-- `last(list)`
-- `count(list)`
+```tide
+query assert(1 + 1 == 2)
+query assert(2 + 2 == 5, "math is broken")
+```
 
-## Math / ranges
+- `condition` must be a boolean.
+- `message` (optional) must be a string.
 
-- `sum(range_or_list)`
+### `assert_eq(a, b)`
 
-(Additional built-ins will be documented here as they stabilize.)
+Asserts that two values are equal.
+
+```tide
+query assert_eq(2 + 2, 4)
+```
+
+## Output
+
+### `print(...values)`
+
+Prints values to stdout (space-separated) and returns `nil`.
+
+```tide
+query print("hello", 123, [1, 2, 3])
+```
+
+## Lists and strings
+
+### `count(list)`
+
+Returns the number of elements in a list.
+
+```tide
+query count([10, 20, 30])  // 3
+```
+
+### `first(list)` / `last(list)`
+
+Returns the first/last element of a list.
+
+If the list is empty, returns `nil`.
+
+```tide
+query first([10, 20, 30])
+query last([10, 20, 30])
+query first([])            // nil
+```
+
+### `length(x)`
+
+Returns the length of a list **or** a string.
+
+```tide
+query length([1, 2, 3])
+query length("tide")
+```
+
+## Math
+
+### `sum(list)`
+
+Sums numeric elements of a list and returns an integer.
+
+```tide
+query sum([1, 2, 3, 4])
+query sum(1..100)
+```
+
+### `abs(x)`
+
+Absolute value.
+
+```tide
+query abs(-5)
+```
+
+### `min(a, b)` / `max(a, b)`
+
+Returns the minimum/maximum of two numbers.
+
+```tide
+query min(10, 20)
+query max(10, 20)
+```
+
+### `min(list)` / `max(list)`
+
+Returns the minimum/maximum element of a list.
+
+If the list is empty, returns `nil`.
+
+```tide
+query min([3, 1, 2])
+query max([3, 1, 2])
+query max([])  // nil
+```
