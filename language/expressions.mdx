@@ -1,0 +1,20 @@
+---
+title: Expressions
+---
+
+# Expressions
+
+Tide supports common expression forms:
+
+- arithmetic: `+ - * / %`
+- comparisons: `== != < <= > >=`
+- boolean operators (as implemented)
+- conditionals: `if <cond> then <a> else <b>`
+
+Example:
+
+```tide
+query if 5 > 3 then "yes" else "no"
+```
+
+Note: Tide is alpha; the exact precedence/associativity rules are documented in the [Grammar](../reference/grammar).

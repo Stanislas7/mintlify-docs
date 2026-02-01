@@ -1,0 +1,27 @@
+---
+title: Collections
+---
+
+# Collections
+
+## Lists
+
+```tide
+let xs = [1, 2, 3]
+query xs
+```
+
+## Dicts
+
+```tide
+let person = {name: "Alice", age: 30}
+query person.name
+query person.age
+```
+
+## Ranges
+
+```tide
+query 1..5   // inclusive end
+query 1..<5  // exclusive end
+```

@@ -1,0 +1,12 @@
+---
+title: Comprehensions
+---
+
+# List comprehensions
+
+```tide
+query [x * x for x in 1..5]
+query [x for x in 1..10 when x % 2 == 0]
+```
+
+Comprehensions can include an optional `when` filter.
