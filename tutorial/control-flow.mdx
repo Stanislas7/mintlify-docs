@@ -1,0 +1,64 @@
+---
+title: Control flow
+---
+
+Tide doesn’t have “statements” in the traditional sense. Instead, you combine:
+
+- expressions (`if ... then ... else ...`)
+- comprehensions (list-building loops)
+- relation clauses + guards (`when`)
+
+That’s enough to write surprisingly expressive programs.
+
+## Conditionals: if / then / else
+
+`if` is an expression, so it always produces a value.
+
+```tide
+query if 5 > 3 then "yes" else "no"
+```
+
+Because it’s an expression, you can nest it:
+
+```tide
+query if 0 > 1 then 10 else if 0 == 0 then 20 else 30
+```
+
+## Guards: `when`
+
+Relation clauses can be guarded with `when`.
+
+```tide
+relation abs where
+  abs(x) = x     when x >= 0
+  abs(x) = -x    when x < 0
+
+query abs(-5)
+query abs(5)
+```
+
+Guards are Tide’s “control flow” inside relations: they decide which clause applies.
+
+## Looping by building: comprehensions
+
+Instead of a `for` statement, Tide has list comprehensions:
+
+```tide
+query [x * x for x in 1..5]
+```
+
+You can add filtering with `when`:
+
+```tide
+query [x for x in 1..20 when x % 2 == 0]
+```
+
+## The vibe
+
+Tide tries to keep the surface area small:
+
+- *expressions* for branching
+- *comprehensions* for iteration
+- *relations* for “rules”
+
+Once you get used to it, the language starts to feel like a tiny logic-flavored calculator you can teach new tricks.

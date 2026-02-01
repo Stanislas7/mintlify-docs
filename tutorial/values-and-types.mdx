@@ -1,0 +1,78 @@
+---
+title: Values and types
+---
+
+Tide is small on purpose: you can learn the whole *shape* of the language quickly, then start writing relations.
+
+This page covers the everyday runtime values Tide understands today (alpha).
+
+## Numbers
+
+Tide supports integers and floats.
+
+```tide
+query 40 + 2
+query 10 * (3 + 4)
+query 7 % 3
+query 3.14 * 2
+```
+
+## Booleans
+
+Booleans show up mostly in comparisons and conditionals.
+
+```tide
+query 5 > 3
+query 2 == 3
+```
+
+## Strings
+
+Strings use double quotes.
+
+```tide
+query "tide"
+```
+
+## Lists
+
+Lists are written with square brackets.
+
+```tide
+query [1, 2, 3]
+query ["a", "b", "c"]
+```
+
+## Dictionaries
+
+Dictionaries are written `{key: value, ...}`:
+
+```tide
+query {name: "Alice", age: 30}
+```
+
+You’ll see lists most often with comprehensions:
+
+```tide
+query [x * x for x in 1..5]
+```
+
+## Ranges
+
+A range is written `a..b` (inclusive) or `a..<b` (exclusive).
+
+```tide
+query 1..5
+query 1..<5
+```
+
+Ranges are especially useful as iterables in comprehensions.
+
+## A note on “types” in Tide
+
+Tide is intentionally lightweight:
+
+- You don’t write type annotations.
+- You learn the language by *running queries*.
+
+When in doubt, put something behind a `query` and see what it evaluates to.

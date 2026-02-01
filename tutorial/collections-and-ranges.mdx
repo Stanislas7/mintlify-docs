@@ -1,0 +1,67 @@
+---
+title: Collections and ranges
+---
+
+Most Tide programs end up moving little collections of values around.
+
+## Lists
+
+Create a list with `[...]`:
+
+```tide
+let xs = [1, 2, 3]
+query xs
+```
+
+Lists play nicely with comprehensions:
+
+```tide
+let xs = [1, 2, 3, 4, 5]
+query [x * 10 for x in xs]
+```
+
+Built-ins like `first`, `last`, and `count` work on lists:
+
+```tide
+query first([10, 20, 30])
+query last([10, 20, 30])
+query count([10, 20, 30])
+```
+
+## Dictionaries (records)
+
+Dictionaries look like `{key: value, ...}` and are great for named data.
+
+```tide
+let person = {name: "Alice", age: 30}
+query person.name
+query person.age
+```
+
+## Ranges
+
+Ranges are written `a..b` and are typically used as iterables.
+
+```tide
+query 1..5     // inclusive end
+query 1..<5    // exclusive end
+```
+
+A classic Tide moment is: “make a range, then build a list from it”:
+
+```tide
+query [x * x for x in 1..10]
+```
+
+And if you just want a number out, use `sum`:
+
+```tide
+query sum(1..100)
+```
+
+## One mental model
+
+- Lists are *data you already have*.
+- Ranges are *data you can generate*.
+
+Comprehensions are the bridge between them.

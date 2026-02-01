@@ -1,0 +1,59 @@
+---
+title: let bindings and scope
+---
+
+`let` is Tide’s way to name a value.
+
+You can think of it as “pin this value to a name so I can use it later.”
+
+## Basic bindings
+
+```tide
+let answer = 42
+query answer
+query answer + 1
+```
+
+## Bindings are just values
+
+You can bind any expression:
+
+```tide
+let xs = [1, 2, 3, 4, 5]
+let squares = [x * x for x in xs]
+
+query squares
+```
+
+Or bind a dictionary (record-like value):
+
+```tide
+let person = {name: "Alice", age: 30}
+query person.name
+```
+
+## Scope (what can “see” what?)
+
+Tide currently has a simple model:
+
+- `let` bindings at the top level are available to later code in the same file.
+- Comprehension variables (like `x` in `[... for x in ...]`) are local to that comprehension.
+
+Example:
+
+```tide
+let xs = [1, 2, 3]
+query [x + 1 for x in xs]
+
+// `x` is not available here.
+// query x
+```
+
+## A practical tip
+
+When exploring the language, it’s totally normal to write:
+
+- a few `let`s
+- then a bunch of `query`s
+
+That style makes Tide feel like a programmable notebook.

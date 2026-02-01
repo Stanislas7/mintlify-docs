@@ -1,0 +1,57 @@
+---
+title: Expressions, operators, and precedence
+---
+
+Tide expressions are meant to feel familiar if you’ve used C/JS/Python.
+
+## Arithmetic
+
+```tide
+query 1 + 2 * 3      // multiplication binds tighter
+query (1 + 2) * 3    // parentheses win
+query 10 / 2
+query 10 % 3
+```
+
+## Comparisons
+
+Comparisons return booleans:
+
+```tide
+query 5 > 3
+query 5 >= 5
+query 2 != 3
+query 2 == 2
+```
+
+## Equality vs “same result”
+
+When you’re testing, prefer the built-ins:
+
+```tide
+query assert_eq(2 + 2, 4)
+```
+
+## Precedence rules (keep it simple)
+
+Tide is still alpha, and the grammar is still stabilizing.
+
+Rules of thumb that will keep you out of trouble:
+
+- Use parentheses when mixing operators.
+- Assume `* / %` bind tighter than `+ -`.
+- Comparisons (`< <= > >= == !=`) bind looser than arithmetic.
+
+If you want the current parser rules, see the draft [Grammar](../reference/grammar).
+
+## Debugging trick: query sub-expressions
+
+If a big expression surprises you, break it apart:
+
+```tide
+query 1 + 2 * 3
+query 2 * 3
+query 1 + 6
+```
+
+Tide is designed to make that “poke and observe” workflow pleasant.

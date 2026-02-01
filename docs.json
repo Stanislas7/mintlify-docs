@@ -22,6 +22,17 @@
             ]
           },
           {
+            "group": "Tutorial",
+            "pages": [
+              "tutorial/values-and-types",
+              "tutorial/let-and-scope",
+              "tutorial/expressions-operators",
+              "tutorial/control-flow",
+              "tutorial/collections-and-ranges",
+              "tutorial/relations-semantics"
+            ]
+          },
+          {
             "group": "Philosophy",
             "pages": [
               "language/philosophy",
